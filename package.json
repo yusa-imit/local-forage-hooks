@@ -1,0 +1,36 @@
+{
+  "name": "local-forage-hooks",
+  "version": "1.0.7",
+  "description": "React hook component for Local Forage",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusa-imit/useLocalForage.git"
+  },
+  "keywords": [
+    "localforage",
+    "indexeddb",
+    "websql",
+    "localstorage",
+    "sessionstorage"
+  ],
+  "author": "yusa-imit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yusa-imit/useLocalForage/issues"
+  },
+  "homepage": "https://github.com/yusa-imit/useLocalForage#readme",
+  "peerDependencies": {
+    "localforage": "^1.10.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  }
+}
