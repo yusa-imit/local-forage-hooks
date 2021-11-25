@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AvailableObject } from "./types";
 import ReactLF from "./functions";
 
