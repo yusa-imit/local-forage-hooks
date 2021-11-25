@@ -1,4 +1,8 @@
 # local-forage-hooks
+![score](https://api.codiga.io/project/30038/score/svg)
+![grade](https://api.codiga.io/project/30038/status/svg)
+
+
 React hook component &amp; useful functions for Local Forage
 
 ### install
