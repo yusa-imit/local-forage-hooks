@@ -1,6 +1,6 @@
 {
   "name": "local-forage-hooks",
-  "version": "1.0.7",
+  "version": "1.0.2",
   "description": "React hook component for Local Forage",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yusa-imit/useLocalForage.git"
+    "url": "git+https://github.com/yusa-imit/local-forage-hooks.git"
   },
   "keywords": [
     "localforage",
@@ -22,9 +22,9 @@
   "author": "yusa-imit",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yusa-imit/useLocalForage/issues"
+    "url": "https://github.com/yusa-imit/local-forage-hooks/issues"
   },
-  "homepage": "https://github.com/yusa-imit/useLocalForage#readme",
+  "homepage": "https://github.com/yusa-imit/local-forage-hooks#readme",
   "peerDependencies": {
     "localforage": "^1.10.0",
     "react": "^17.0.2",
