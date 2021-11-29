@@ -51,6 +51,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDBInitWithFetch = void 0;
 var react_1 = require("react");
 var functions_1 = __importDefault(require("./functions"));
+/**
+ * Init db with fetch function.
+ * @param KeyValue Function that returns Promise array of K-V
+ * @param table table's name
+ * @param db_name (optional) db's name
+ * @param customDependancy same as React's useEffect Array, re-init array when customDependancy array changed.
+ * @returns boolean(Loading or not)
+ */
 function useDBInitWithFetch(KeyValue, table, db_name, customDependancy) {
     if (customDependancy === void 0) { customDependancy = []; }
     var _a = (0, react_1.useState)(true), loading = _a[0], setLoading = _a[1];
