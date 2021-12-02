@@ -3,6 +3,10 @@ export interface DB_TYPE {
         [table: string]: LocalForage;
     };
 }
+export interface ReturnKV {
+    key: string;
+    value: AvailableObject | null;
+}
 export interface KV {
     key: string;
     value: AvailableObject;

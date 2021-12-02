@@ -39,6 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.useLocalForageItem = void 0;
 var react_1 = require("react");
 var functions_1 = __importDefault(require("./functions"));
 /**
@@ -78,4 +79,4 @@ function useLocalForageItem(key, table, db_name, CHECK_NULL_RESULT) {
     }, [key, table, db_name, nullState]);
     return [data, loading];
 }
-exports.default = useLocalForageItem;
+exports.useLocalForageItem = useLocalForageItem;

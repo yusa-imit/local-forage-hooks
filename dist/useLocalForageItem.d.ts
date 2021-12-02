@@ -7,5 +7,4 @@ import { AvailableObject } from "./types";
  * @param CHECK_NULL_RESULT (Optional, Dangerous) Check if result is null or not. This parameter can occur infinite loop.
  * @returns [data, loading]. data : value of data, default is "none", loading: Loading state, control render function with this.
  */
-declare function useLocalForageItem(key: string, table: string, db_name?: string, CHECK_NULL_RESULT?: boolean): [AvailableObject | null, boolean];
-export default useLocalForageItem;
+export declare function useLocalForageItem(key: string, table: string, db_name?: string, CHECK_NULL_RESULT?: boolean): [AvailableObject | null, boolean];
