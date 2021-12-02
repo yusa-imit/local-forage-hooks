@@ -5,6 +5,20 @@
 
 React hook component &amp; useful functions for Local Forage
 
+
+### Table of Contents
+- [local-forage-hooks](#local-forage-hooks)
+    + [install](#install)
+    + [quick usage](#quick-usage)
+  * [hooks](#hooks)
+    + [useDBInitWithFetch](#usedbinitwithfetch)
+    + [useLocalForageItem](#uselocalforageitem)
+    + [useLocalForageItemList](#uselocalforageitemlist)
+  * [Function Class](#function-class)
+    + [ReactLF](#reactlf)
+      - [Usage of ReactLF](#usage-of-reactlf)
+  * [FutureWorks](#futureworks)
+
 ### install
 
 ```bash
