@@ -10,7 +10,7 @@ import ReactLF from "./functions";
  * @param CHECK_NULL_RESULT (Optional, Dangerous) Check if result is null or not. This parameter can occur infinite loop.
  * @returns [data, loading]. data : value of data, default is "none", loading: Loading state, control render function with this.
  */
-function useLocalForageItem(key: string, table: string, db_name?: string, CHECK_NULL_RESULT?: boolean): [AvailableObject | null, boolean] {
+export function useLocalForageItem(key: string, table: string, db_name?: string, CHECK_NULL_RESULT?: boolean): [AvailableObject | null, boolean] {
     const [data, setData] = useState<AvailableObject | null>("none");
     const [loading, setLoading] = useState<boolean>(true);
     const [nullState, setNullState] = useState<boolean>(true);
@@ -32,5 +32,3 @@ function useLocalForageItem(key: string, table: string, db_name?: string, CHECK_
     }, [key, table, db_name, nullState]);
     return [data, loading];
 }
-
-export default useLocalForageItem;
