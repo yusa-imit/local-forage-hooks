@@ -49,7 +49,7 @@ return :
 |-----------|------|
 |      KeyValue     |   () => Promise&lt;KV&gt;   |
 |      table     |   string   |
-|     db_name?      |   string   |
+|     db_name?      |   string | undefined   |
 | customDependancy? | Array&lt;unknown&gt; |
 
 ##### KeyValue
@@ -103,7 +103,7 @@ return :
 |-----------|------|
 |      key     |   string   |
 |      table     |   string   |
-|     db_name?      |   string   |
+|     db_name?      |   string or undefined  |
 | CHECK_NULL_RESULT? | boolean |
 
 ##### key
@@ -117,6 +117,46 @@ Table's name where data exists.
 
 ##### CHECK_NULL_RESULT
 (Optional) Check if result is null or not. This parameter can occur infinite loop.
+
+### useLocalForageItemList
+
+Get DB's item in type of list.
+
+return :
+
+    data: Array of value from DB
+    loading: whether its loading or not
+    
+| Parameter | type |
+|-----------|------|
+|      keys     |   Array&lt;unknown&gt;   |
+|      table     |   string   |
+|     db_name?      |   string or undefined   |
+| REAL_TIME? | boolean |
+
+##### keys
+Array of Key of data looking for
+
+##### table
+Table's name where data exists.
+
+##### db_name
+(Optional) DB's name.
+
+##### REAL_TIME
+(Optional) If it's false or undefined, it changes its state when function get all data in key list, if it's true, it changes its state when every time get data in key list.
+
+###### Difference between REAL_TIME
+
+when false or undefined
+
+![chrome_Ak82alShnP](https://user-images.githubusercontent.com/43007994/144421415-5f5464ab-c65c-464d-8f10-cfd068d15843.png)
+
+
+
+when true
+
+![chrome_MnK1DsI1jf](https://user-images.githubusercontent.com/43007994/144421418-e0b78e89-81ec-4dbc-a6ce-144c88d4e2eb.png)
 
 ## Function Class
 ### ReactLF
