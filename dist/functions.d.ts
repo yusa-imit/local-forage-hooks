@@ -55,6 +55,26 @@ declare abstract class ReactLF {
      */
     static setDBBulkItem: (TABLE_NAME: string, KV_ARRAY: Array<KV>, DB_NAME?: string | undefined) => Promise<void>;
     /**
+     * Set item of Blob in table
+     * @param TABLE_NAME Table's name where put data in.
+     * @param KEY Key of data
+     * @param URL (optional) URL where data fetch from. At least one of parameter URL or BLOB is necessary.
+     * @param BLOB (optional) Blob object to save. At least one of parameter URL or BLOB is necessary.
+     * @param DB_NAME (optional) DB's name
+     * @returns Promise<void>
+     */
+    static setDBBlob: (TABLE_NAME: string, KEY: string, URL?: string | undefined, BLOB?: Blob | undefined, DB_NAME?: string | undefined) => Promise<void>;
+    /**
+     * Get Item of Blob type from db
+     * @param TABLE_NAME Table's name where get data from.
+     * @param KEY Key of Data
+     * @param URL (optional) URL where data fetch from. It works only when table-key's db data is null.
+     * @param SAVE_IF_NULL (optional) If db's data is null, then save URL's fetch data into designated table-key storage.
+     * @param DB_NAME (optional) DB's name
+     * @returns Promise<Blob | null>
+     */
+    static getDBBlob: (TABLE_NAME: string, KEY: string, URL?: string | undefined, SAVE_IF_NULL?: boolean | undefined, DB_NAME?: string | undefined) => Promise<Blob | null>;
+    /**
      * Cleaning table's data.
      * @param TABLE_NAME Table's name where remove data.
      * @param DB_NAME (Optional) DB's name

@@ -102,6 +102,51 @@ abstract class ReactLF {
         return;
     };
     /**
+     * Set item of Blob in table
+     * @param TABLE_NAME Table's name where put data in.
+     * @param KEY Key of data
+     * @param URL (optional) URL where data fetch from. At least one of parameter URL or BLOB is necessary.
+     * @param BLOB (optional) Blob object to save. At least one of parameter URL or BLOB is necessary.
+     * @param DB_NAME (optional) DB's name
+     * @returns Promise<void>
+     */
+    public static setDBBlob = async (TABLE_NAME: string, KEY: string, URL?: string, BLOB?: Blob, DB_NAME?: string): Promise<void> => {
+        if (URL === undefined && BLOB === undefined) new Error("Set URL or Blob itself to set blob in db");
+        if (URL) {
+            await this.setDBItem(TABLE_NAME, KEY, await (await fetch(URL)).blob(), DB_NAME ? DB_NAME : this.INITIAL_DB_NAME);
+            return;
+        }
+        if (BLOB) {
+            await this.setDBItem(TABLE_NAME, KEY, BLOB, DB_NAME ? DB_NAME : this.INITIAL_DB_NAME);
+            return;
+        }
+    };
+    /**
+     * Get Item of Blob type from db
+     * @param TABLE_NAME Table's name where get data from.
+     * @param KEY Key of Data
+     * @param URL (optional) URL where data fetch from. It works only when table-key's db data is null.
+     * @param SAVE_IF_NULL (optional) If db's data is null, then save URL's fetch data into designated table-key storage.
+     * @param DB_NAME (optional) DB's name
+     * @returns Promise<Blob | null>
+     */
+    public static getDBBlob = async (TABLE_NAME: string, KEY: string, URL?: string, SAVE_IF_NULL?: boolean, DB_NAME?: string): Promise<Blob | null> => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const data: Blob | null = await this.getDBItem(TABLE_NAME, KEY, DB_NAME ? DB_NAME : this.INITIAL_DB_NAME);
+        if (data === null) {
+            if (URL === undefined) return null;
+            const urlData = await (await fetch(URL)).blob();
+            if (SAVE_IF_NULL) {
+                await this.setDBBlob(TABLE_NAME, KEY, undefined, urlData, DB_NAME ? DB_NAME : this.INITIAL_DB_NAME);
+            }
+            return urlData;
+        } else {
+            if (!(data instanceof Blob)) new Error("Data from db is not a BLOB type object. See your db once more");
+            return data;
+        }
+    };
+    /**
      * Cleaning table's data.
      * @param TABLE_NAME Table's name where remove data.
      * @param DB_NAME (Optional) DB's name

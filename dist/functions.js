@@ -179,6 +179,77 @@ var ReactLF = /** @class */ (function () {
         });
     }); };
     /**
+     * Set item of Blob in table
+     * @param TABLE_NAME Table's name where put data in.
+     * @param KEY Key of data
+     * @param URL (optional) URL where data fetch from. At least one of parameter URL or BLOB is necessary.
+     * @param BLOB (optional) Blob object to save. At least one of parameter URL or BLOB is necessary.
+     * @param DB_NAME (optional) DB's name
+     * @returns Promise<void>
+     */
+    ReactLF.setDBBlob = function (TABLE_NAME, KEY, URL, BLOB, DB_NAME) { return __awaiter(void 0, void 0, void 0, function () {
+        var _b, _c;
+        return __generator(_a, function (_d) {
+            switch (_d.label) {
+                case 0:
+                    if (URL === undefined && BLOB === undefined)
+                        new Error("Set URL or Blob itself to set blob in db");
+                    if (!URL) return [3 /*break*/, 4];
+                    _b = this.setDBItem;
+                    _c = [TABLE_NAME, KEY];
+                    return [4 /*yield*/, fetch(URL)];
+                case 1: return [4 /*yield*/, (_d.sent()).blob()];
+                case 2: return [4 /*yield*/, _b.apply(this, _c.concat([_d.sent(), DB_NAME ? DB_NAME : this.INITIAL_DB_NAME]))];
+                case 3:
+                    _d.sent();
+                    return [2 /*return*/];
+                case 4:
+                    if (!BLOB) return [3 /*break*/, 6];
+                    return [4 /*yield*/, this.setDBItem(TABLE_NAME, KEY, BLOB, DB_NAME ? DB_NAME : this.INITIAL_DB_NAME)];
+                case 5:
+                    _d.sent();
+                    return [2 /*return*/];
+                case 6: return [2 /*return*/];
+            }
+        });
+    }); };
+    /**
+     * Get Item of Blob type from db
+     * @param TABLE_NAME Table's name where get data from.
+     * @param KEY Key of Data
+     * @param URL (optional) URL where data fetch from. It works only when table-key's db data is null.
+     * @param SAVE_IF_NULL (optional) If db's data is null, then save URL's fetch data into designated table-key storage.
+     * @param DB_NAME (optional) DB's name
+     * @returns Promise<Blob | null>
+     */
+    ReactLF.getDBBlob = function (TABLE_NAME, KEY, URL, SAVE_IF_NULL, DB_NAME) { return __awaiter(void 0, void 0, void 0, function () {
+        var data, urlData;
+        return __generator(_a, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, this.getDBItem(TABLE_NAME, KEY, DB_NAME ? DB_NAME : this.INITIAL_DB_NAME)];
+                case 1:
+                    data = _b.sent();
+                    if (!(data === null)) return [3 /*break*/, 6];
+                    if (URL === undefined)
+                        return [2 /*return*/, null];
+                    return [4 /*yield*/, fetch(URL)];
+                case 2: return [4 /*yield*/, (_b.sent()).blob()];
+                case 3:
+                    urlData = _b.sent();
+                    if (!SAVE_IF_NULL) return [3 /*break*/, 5];
+                    return [4 /*yield*/, this.setDBBlob(TABLE_NAME, KEY, undefined, urlData, DB_NAME ? DB_NAME : this.INITIAL_DB_NAME)];
+                case 4:
+                    _b.sent();
+                    _b.label = 5;
+                case 5: return [2 /*return*/, urlData];
+                case 6:
+                    if (!(data instanceof Blob))
+                        new Error("Data from db is not a BLOB type object. See your db once more");
+                    return [2 /*return*/, data];
+            }
+        });
+    }); };
+    /**
      * Cleaning table's data.
      * @param TABLE_NAME Table's name where remove data.
      * @param DB_NAME (Optional) DB's name
