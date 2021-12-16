@@ -172,6 +172,46 @@ when true
 
 ![chrome_MnK1DsI1jf](https://user-images.githubusercontent.com/43007994/144421418-e0b78e89-81ec-4dbc-a6ce-144c88d4e2eb.png)
 
+
+
+
+### useBlob
+
+Get DB's Blob type item.
+
+return :
+
+    data: value from DB as type of Blob
+    loading: whether its loading or not
+    
+| Parameter | type |
+|-----------|------|
+|      key     |   string   |
+|      table     |   string   |
+|     url?      |   string   |
+|     db_name?      |   string or undefined  |
+| SAVE_IF_NULL? | boolean |
+| CHECK_NULL_RESULT? | boolean |
+
+##### key
+Key of data looking for
+
+##### table
+Table's name where data exists.
+
+##### url
+(optional) URL where data fetch from. It works only when table-key's db data is null.
+
+##### db_name
+(Optional) DB's name.
+
+##### SAVE_IF_NULL
+(optional) If db's data is null, then save URL's fetch data into designated table-key storage.
+
+##### CHECK_NULL_RESULT
+(Optional) Check if result is null or not. This parameter can occur infinite loop.
+
+
 ## Function Class
 ### ReactLF
 React is collection of functions of localforage's little upgraded version.
